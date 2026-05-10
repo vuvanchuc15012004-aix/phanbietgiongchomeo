@@ -1,0 +1,85 @@
+timestamp,filename,top1_name_en,top1_name_vi,confidence,wiki_found
+2026-04-13T22:06:28.375799,cat.1.jpg,Tabby,Tabby,55.2,false
+2026-04-13T22:06:49.438405,cat.18.jpg,Tiger_Cat,Tiger_Cat,25.4,false
+2026-04-13T22:07:02.507048,cho3.jpg,Dingo,Dingo,60.8,false
+2026-04-13T22:16:03.024474,cho3.jpg,Dingo,Dingo,60.8,false
+2026-04-13T22:16:08.344481,cho3.jpg,Dingo,Dingo,60.8,false
+2026-04-13T22:16:17.212873,cho2.jpg,Beagle,Chó Beagle,13.9,false
+2026-04-13T22:16:25.713769,cho3.jpg,Dingo,Dingo,60.8,false
+2026-04-13T22:24:20.684418,cho3.jpg,dingo,dingo,60.8,false
+2026-04-13T22:30:51.983187,cho3.jpg,dingo,dingo,60.8,false
+2026-04-13T22:31:00.189661,cho3.jpg,dingo,dingo,60.8,false
+2026-04-13T22:31:10.715620,cho1.jpg,American_Staffordshire_terrier,American_Staffordshire_terrier,65.2,false
+2026-04-13T22:31:33.305432,meo2.jpg,Persian_cat,Persian_cat,10.8,false
+2026-04-13T22:32:31.538066,cho3.jpg,dingo,dingo,60.8,false
+2026-04-13T22:33:43.631209,tải xuống (2).jfif,Siamese_cat,Siamese_cat,67.6,false
+2026-04-13T22:38:17.755029,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,chow,chow,24.4,false
+2026-04-13T22:38:28.710778,tải xuống (1).jfif,Siamese_cat,Siamese_cat,17.9,false
+2026-04-13T22:38:35.577755,tải xuống (2).jfif,Siamese_cat,Siamese_cat,67.6,false
+2026-04-13T23:32:57.640378,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,miniature_poodle,Chó Miniature Poodle,0.2,false
+2026-04-13T23:33:16.673244,tải xuống (1).jfif,egyptian_mau,Mèo Egyptian Mau,0.2,false
+2026-04-13T23:33:29.071312,tải xuống (2).jfif,egyptian_mau,Mèo Egyptian Mau,0.7,false
+2026-04-13T23:39:34.649023,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,papillon,Chó Papillon,0.2,false
+2026-04-13T23:39:44.906294,tải xuống (2).jfif,egyptian_mau,Mèo Egyptian Mau,0.7,false
+2026-04-13T23:40:03.484814,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,papillon,Chó Papillon,0.2,false
+2026-04-13T23:40:29.785376,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,papillon,Chó Papillon,0.2,false
+2026-04-13T23:40:36.232066,tải xuống (3).jfif,lhasa_apso,Chó Lhasa Apso,0.5,false
+2026-04-13T23:59:07.724399,tải xuống (3).jfif,lhasa_apso,Chó Lhasa Apso,0.5,false
+2026-04-13T23:59:16.710237,tải xuống (1).jfif,egyptian_mau,Mèo Egyptian Mau,0.3,false
+2026-04-13T23:59:25.476092,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,papillon,Chó Papillon,0.3,false
+2026-04-13T23:59:34.502279,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,papillon,Chó Papillon,0.3,false
+2026-04-13T23:59:39.599331,tải xuống (2).jfif,egyptian_mau,Mèo Egyptian Mau,0.9,false
+2026-04-13T23:59:47.679760,tải xuống (2).jfif,egyptian_mau,Mèo Egyptian Mau,0.9,false
+2026-04-13T23:59:52.983105,tải xuống (3).jfif,lhasa_apso,Chó Lhasa Apso,0.5,false
+2026-04-14T00:07:31.456941,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,chow_chow,Chó Chow Chow,0.4,false
+2026-04-14T00:07:41.158048,tải xuống (1).jfif,siamese,Mèo Xiêm,0.3,false
+2026-04-14T00:07:47.473721,tải xuống (2).jfif,siamese,Mèo Xiêm,1.0,false
+2026-04-14T00:07:53.389545,tải xuống.jfif,egyptian_mau,Mèo Egyptian Mau,0.3,false
+2026-04-14T00:08:01.798266,tải xuống (3).jfif,siberian_husky,Chó Siberian Husky,0.9,false
+2026-04-14T00:08:11.019926,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,chow_chow,Chó Chow Chow,0.4,false
+2026-04-19T11:14:52.831697,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-04-19T11:15:00.398820,tải xuống (2).jfif,Siamese,Mèo Xiêm,83.4,false
+2026-04-19T11:15:07.599183,tải xuống (3).jfif,pug,Chó Pug,16.0,false
+2026-04-19T11:15:28.494104,tải xuống.jfif,Sphynx,Mèo Sphynx,94.5,false
+2026-04-19T11:15:40.868939,tải xuống (1).jfif,Ragdoll,Mèo Ragdoll,97.7,false
+2026-04-19T11:15:50.165745,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-04-19T11:21:41.085729,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-04-19T11:21:52.897534,tải xuống.jfif,Sphynx,Mèo Sphynx,94.5,false
+2026-04-19T11:21:58.837157,tải xuống (3).jfif,pug,Chó Pug,16.0,false
+2026-04-19T11:22:08.532817,tải xuống (2).jfif,Siamese,Mèo Xiêm,83.4,false
+2026-04-19T11:22:47.950253,tải xuống2.jfif,keeshond,Chó Keeshond,12.1,false
+2026-04-19T11:22:54.601949,tải xuống (4).jfif,shiba_inu,Chó Shiba Inu,41.8,false
+2026-04-19T11:23:58.045517,tải xuống (9).jfif,Persian,Mèo Ba Tư,78.8,false
+2026-04-19T11:24:03.261427,tải xuống (7).jfif,chihuahua,Chó Chihuahua,72.2,false
+2026-04-19T11:24:08.558710,tải xuống (6).jfif,chihuahua,Chó Chihuahua,73.8,false
+2026-04-19T11:29:34.214247,tải xuống (3).jfif,pug,Chó Pug,16.0,false
+2026-04-19T11:29:41.050183,tải xuống (4).jfif,shiba_inu,Chó Shiba Inu,41.8,false
+2026-04-19T11:31:53.535662,tải xuống (3).jfif,pug,Chó Pug,16.0,false
+2026-04-19T11:39:31.908423,images.jfif,american_pit_bull_terrier,american_pit_bull_terrier,27.9,false
+2026-04-19T11:39:38.585492,tải xuống (1).jfif,Ragdoll,Mèo Ragdoll,97.7,false
+2026-04-19T11:39:43.653228,tải xuống (2).jfif,Siamese,Mèo Xiêm,83.4,false
+2026-04-19T11:39:48.480672,tải xuống (5).jfif,american_pit_bull_terrier,american_pit_bull_terrier,80.1,false
+2026-04-19T11:40:43.172215,tải xuống (9).jfif,Persian,Mèo Ba Tư,78.8,false
+2026-04-19T11:40:48.143590,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-04-19T11:40:58.625618,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-04-19T11:41:05.528039,tải xuống (5).jfif,american_pit_bull_terrier,american_pit_bull_terrier,80.1,false
+2026-04-19T11:44:23.190557,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-04-19T11:44:30.760026,tải xuống (5).jfif,american_pit_bull_terrier,Chó Pit Bull Mỹ,80.1,false
+2026-04-19T11:44:40.481424,tải xuống (9).jfif,Persian,Mèo Ba Tư,78.8,false
+2026-04-19T20:02:03.131786,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-05-04T11:30:11.214251,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-05-04T11:30:18.763980,images.jfif,american_pit_bull_terrier,Chó Pit Bull Mỹ,27.9,false
+2026-05-04T11:30:29.814465,tải xuống (1).jfif,Ragdoll,Mèo Ragdoll,97.7,false
+2026-05-04T11:30:34.342642,tải xuống (2).jfif,Siamese,Mèo Xiêm,83.4,false
+2026-05-04T11:30:47.576278,tải xuống (5).jfif,american_pit_bull_terrier,Chó Pit Bull Mỹ,80.1,false
+2026-05-04T11:30:52.672416,tải xuống (6).jfif,chihuahua,Chó Chihuahua,73.8,false
+2026-05-04T11:31:14.512946,tải xuống (9).jfif,Persian,Mèo Ba Tư,78.8,false
+2026-05-04T11:31:20.937133,tải xuống2.jfif,keeshond,Chó Keeshond,12.1,false
+2026-05-04T14:20:30.358241,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-05-04T14:23:19.707004,tải xuống (9).jfif,Persian,Mèo Ba Tư,78.8,false
+2026-05-04T14:23:25.856152,tải xuống (2).jfif,Siamese,Mèo Xiêm,83.4,false
+2026-05-04T16:01:01.580496,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-05-04T16:16:42.863708,0c6f9eb1d9edb819560eb60e7d64e5c2.jpg,shiba_inu,Chó Shiba Inu,95.7,false
+2026-05-04T16:17:02.337941,tải xuống2.jfif,keeshond,Chó Keeshond,12.1,false
+2026-05-04T16:17:22.206899,tải xuống (8).jfif,Persian,Mèo Ba Tư,73.8,false
+2026-05-04T16:17:35.436131,tải xuống (1).jfif,Ragdoll,Mèo Ragdoll,97.7,false

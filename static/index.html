@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhận diện giống Chó/Mèo</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #22c55e;
+            --radius: 16px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 640px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .upload-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            text-align: center;
+            border: 2px dashed var(--border);
+            transition: border-color 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+
+        .upload-card:hover, .upload-card.dragover {
+            border-color: var(--primary);
+            background: #f0f3ff;
+        }
+
+        .upload-card input[type="file"] {
+            display: none;
+        }
+
+        .upload-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upload-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .upload-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .upload-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .preview-area {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .preview-area.active {
+            display: flex;
+        }
+
+        #preview-img {
+            max-width: 100%;
+            max-height: 360px;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-identify {
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-identify:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99,102,241,0.4);
+        }
+
+        .btn-identify:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result-card {
+            display: none;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .result-card.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .result-header .animal-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 4px 16px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .result-header .breed-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .result-header .breed-en {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .confidence-bar-wrap {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            height: 8px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+
+        .confidence-bar {
+            height: 100%;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50px;
+            transition: width 0.8s ease;
+            width: 0%;
+        }
+
+        .confidence-text {
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .top-predictions {
+            padding: 20px 24px;
+        }
+
+        .top-predictions h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .pred-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pred-item:last-child { border-bottom: none; }
+
+        .pred-rank {
+            width: 28px;
+            height: 28px;
+            background: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .pred-rank.top { background: var(--primary); color: white; }
+
+        .pred-info { flex: 1; min-width: 0; }
+
+        .pred-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pred-conf {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .pred-bar-wrap {
+            width: 100px;
+            flex-shrink: 0;
+        }
+
+        .pred-bar {
+            background: var(--border);
+            border-radius: 50px;
+            height: 4px;
+            overflow: hidden;
+        }
+
+        .pred-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 50px;
+            transition: width 0.6s ease;
+        }
+
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .loading-overlay.active { display: flex; }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .error-msg {
+            display: none;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.875rem;
+        }
+
+        .error-msg.active { display: block; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Nhận diện giống Chó/Mèo</h1>
+    <p>Tải ảnh lên để AI nhận diện giống</p>
+</header>
+
+<div class="app-container">
+    <div class="upload-card" id="upload-card">
+        <input type="file" id="file-input" accept="image/jpeg,image/png,image/jpg" />
+        <div class="upload-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        </div>
+        <h3>Kéo thả hoặc chọn ảnh</h3>
+        <p>Định dạng: JPEG, PNG &bull; Tối đa 10MB</p>
+    </div>
+
+    <div class="preview-area" id="preview-area">
+        <img id="preview-img" alt="Preview" />
+        <button class="btn-identify" id="btn-identify">Nhận diện</button>
+    </div>
+
+    <div class="error-msg" id="error-msg"></div>
+
+    <div class="result-card" id="result-card">
+        <div class="result-header">
+            <div class="animal-badge" id="animal-badge"></div>
+            <div class="breed-name" id="breed-name-vi"></div>
+            <div class="breed-en" id="breed-name-en"></div>
+            <div class="confidence-bar-wrap">
+                <div class="confidence-bar" id="conf-bar"></div>
+            </div>
+            <div class="confidence-text" id="conf-text"></div>
+        </div>
+        <div class="top-predictions">
+            <h4>Các kết quả khả thi</h4>
+            <div id="top-list"></div>
+        </div>
+    </div>
+</div>
+
+<div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    <p>Đang nhận diện...</p>
+</div>
+
+<script>
+const uploadCard = document.getElementById('upload-card');
+const fileInput = document.getElementById('file-input');
+const previewArea = document.getElementById('preview-area');
+const previewImg = document.getElementById('preview-img');
+const btnIdentify = document.getElementById('btn-identify');
+const resultCard = document.getElementById('result-card');
+const errorMsg = document.getElementById('error-msg');
+const loading = document.getElementById('loading');
+
+// Click vào card → mở file picker
+uploadCard.addEventListener('click', () => fileInput.click());
+
+// Drag & drop
+uploadCard.addEventListener('dragover', e => {
+    e.preventDefault();
+    uploadCard.classList.add('dragover');
+});
+uploadCard.addEventListener('dragleave', () => uploadCard.classList.remove('dragover'));
+uploadCard.addEventListener('drop', e => {
+    e.preventDefault();
+    uploadCard.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+});
+
+fileInput.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) handleFile(file);
+});
+
+function handleFile(file) {
+    if (!['image/jpeg','image/png','image/jpg'].includes(file.type)) {
+        showError('Định dạng không hỗ trợ. Vui lòng dùng JPEG hoặc PNG.');
+        return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+        showError('File quá lớn. Tối đa 10MB.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = e => {
+        previewImg.src = e.target.result;
+        previewArea.classList.add('active');
+        resultCard.classList.remove('active');
+        errorMsg.classList.remove('active');
+        hideError();
+    };
+    reader.readAsDataURL(file);
+}
+
+btnIdentify.addEventListener('click', async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    showLoading();
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const res = await fetch('/upload', { method: 'POST', body: formData });
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.detail || 'Lỗi server');
+        }
+        const data = await res.json();
+        renderResult(data);
+    } catch (e) {
+        showError(e.message);
+        resultCard.classList.remove('active');
+    } finally {
+        hideLoading();
+    }
+});
+
+function renderResult(data) {
+    const conf = Number(data.top1_confidence || 0);
+    const confDisplay = conf.toFixed(1);
+
+    document.getElementById('conf-bar').style.width = `${Math.max(0, Math.min(100, conf))}%`;
+    document.getElementById('conf-text').textContent = `Độ tin cậy: ${confDisplay}%`;
+
+    document.getElementById('breed-name-vi').textContent = data.top1_name_vi || 'Không xác định';
+    document.getElementById('breed-name-en').textContent = data.top1_name_en || '';
+
+    // Top predictions
+    const topList = document.getElementById('top-list');
+    topList.innerHTML = '';
+    (data.alternatives || []).forEach((pred, i) => {
+        const confPct = Number(pred.confidence || 0).toFixed(1);
+        const rankClass = i === 0 ? 'top' : '';
+        topList.innerHTML += `
+            <div class="pred-item">
+                <div class="pred-rank ${rankClass}">${i + 2}</div>
+                <div class="pred-info">
+                    <div class="pred-name">${pred.name_vi}</div>
+                    <div class="pred-conf">${pred.name_en} · ${confPct}%</div>
+                </div>
+                <div class="pred-bar-wrap">
+                    <div class="pred-bar"><div class="pred-bar-fill" style="width:${Math.max(0, Math.min(100, Number(pred.confidence || 0)))}%"></div></div>
+                </div>
+            </div>`;
+    });
+
+    resultCard.classList.add('active');
+}
+
+function showLoading() {
+    loading.classList.add('active');
+    btnIdentify.disabled = true;
+}
+function hideLoading() {
+    loading.classList.remove('active');
+    btnIdentify.disabled = false;
+}
+function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('active');
+}
+function hideError() {
+    errorMsg.classList.remove('active');
+}
+</script>
+
+</body>
+</html>
